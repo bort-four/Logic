@@ -133,7 +133,7 @@ typedef struct
 /* === functions === */
 
 void expandVector(Vector* vectPtr, size_t needLen, Boolean extra);
-char* getDynamicStr(char str[]);
+char* getDynamicStr(const char str[]);
 
 
 /* for parse & error recovery */

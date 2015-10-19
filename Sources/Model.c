@@ -18,7 +18,7 @@
 
 /* work with structures */
 
-DataType createDataType(char name[])
+DataType createDataType(const char name[])
 {
 	size_t conNum;
 	DataType type;
@@ -73,7 +73,7 @@ void freeRestriction(Restriction* restrPtr)
 }
 
 
-Func createFunc(char name[], size_t parCt, DataTypeId parTypes[],
+Func createFunc(const char name[], size_t parCt, DataTypeId parTypes[],
 										   DataTypeId dataType)
 {
 	Func func;
@@ -357,7 +357,7 @@ void freeModel(_md)
 }
 
 
-DataTypeId addDataType(char name[], _md)
+DataTypeId addDataType(const char name[], _md)
 {
 	if (getTypeIdByName(name, modelPtr) != BAD_INDEX)
 	{
@@ -368,7 +368,7 @@ DataTypeId addDataType(char name[], _md)
 	return types_m.len - 1;
 }
 
-DataTypeId getTypeIdByName(char name[], _md)
+DataTypeId getTypeIdByName(const char name[], _md)
 {
 	size_t typeNum;
 	
@@ -406,7 +406,7 @@ ssize_t addPred(Pred pred, _md)
 }
 
 
-ssize_t getFuncNumByName(char name[], _md)
+ssize_t getFuncNumByName(const char name[], _md)
 {
 	size_t funcNum;
 	
@@ -418,7 +418,7 @@ ssize_t getFuncNumByName(char name[], _md)
 }
 
 
-ssize_t getPredNumByName(char name[], _md)
+ssize_t getPredNumByName(const char name[], _md)
 {
 	size_t predNum;
 	
@@ -430,7 +430,7 @@ ssize_t getPredNumByName(char name[], _md)
 }
 
 
-Func* getFuncOrPredByName(char name[], _md)	/* returns Func or Pred pointer */
+Func* getFuncOrPredByName(const char name[], _md)	/* returns Func or Pred pointer */
 {
 	ssize_t predNum = getPredNumByName(name, modelPtr);
 	
@@ -446,7 +446,7 @@ Func* getFuncOrPredByName(char name[], _md)	/* returns Func or Pred pointer */
 }
 
 
-supp getOrAddConstant(char name[], DataTypeId typeId, _md)
+supp getOrAddConstant(const char name[], DataTypeId typeId, _md)
 {
 	if (typeId < 0 || typeId >= types_m.len)
 	{
@@ -482,7 +482,7 @@ supp getOrAddConstant(char name[], DataTypeId typeId, _md)
 	}
 	
 	name = getDynamicStr(name);
-	addBack(typePtr->constNames, char*, name);
+	addBack(typePtr->constNames, const char*, name);
 	result.id = typePtr->constNames.len - 1;
 	return result;
 }
@@ -640,6 +640,7 @@ void addError(Error error, _md)
 	(to_len_var) += from_len;                                          \
 }
 
+/*
 //~ #define addText(to_str, from_str, to_len_var)                                  \
 //~ {                                                                              \
 	//~ size_t from_len = strlen(from_str);                                        \
@@ -655,7 +656,7 @@ void addError(Error error, _md)
 		//~ (to_str) = 
 	//~ }                                                                         \
 //~ }
-
+*/
 
 char* getConstStr(supp con, DataTypeId typeId, _md)
 {

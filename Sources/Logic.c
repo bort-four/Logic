@@ -89,7 +89,7 @@ void expandVector(Vector* vectPtr, size_t needLen, Boolean extra)
 	vectPtr->maxLen = needLen;
 }
 
-char* getDynamicStr(char str[])
+char* getDynamicStr(const char str[])
 {
 	if (str == NULL) return NULL;
 	

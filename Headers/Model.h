@@ -202,10 +202,10 @@ typedef struct {
 #define getTypePtr(num)		( ptr(DataType, types_m) + (num) )
 #define getRestrPtr(num)	( ptr(Restriction, restrs_m) + (num) )
 
-#define shiftSupp(con)                                                         \
+#define shiftSupp(con)                                                 \
 	{ if ((con).integer >= 0) (con).integer += RESERVED_CONST_COUNT; }
 
-#define shiftSuppBack(con)                                                     \
+#define shiftSuppBack(con)                                             \
 	{ if ((con).integer >= 0) (con).integer -= RESERVED_CONST_COUNT; }
 
 
@@ -213,7 +213,7 @@ typedef struct {
 /* === FUNCTIONS === */
 
 /* work with structures */
-DataType createDataType(char name[]);
+DataType createDataType(const char name[]);
 void freeDataType(DataType* typePtr);
 
 ExprNode* createExprNode(ExprType type);	/* create with malloc	*/
@@ -222,8 +222,8 @@ void freeExprNode(ExprNode* nodePtr);	/* recursive free	*/
 void initRestriction(Restriction* restrPtr);
 void freeRestriction(Restriction* restrPtr);
 
-Func createFunc(char name[], size_t parCt, DataTypeId parTypes[],
-										   DataTypeId dataType);
+Func createFunc(const char name[], size_t parCt, DataTypeId parTypes[],
+												 DataTypeId dataType);
 void freeFunc(Func* funcPtr);
 
 void freeAxiom(Axiom* axiomPtr);
@@ -246,16 +246,16 @@ Fact getFact(QueryIterator* qiterPtr);
 void initModel(_md);
 void freeModel(_md);
 
-DataTypeId addDataType(char name[], _md);
-DataTypeId getTypeIdByName(char name[], _md);
+DataTypeId addDataType(const char name[], _md);
+DataTypeId getTypeIdByName(const char name[], _md);
 
 ssize_t addFunc(Func func, _md);
 ssize_t addPred(Pred pred, _md);
-ssize_t getFuncNumByName(char name[], _md);
-ssize_t getPredNumByName(char name[], _md);
-Func* getFuncOrPredByName(char name[], _md); /* returns Func or Pred pointer */
+ssize_t getFuncNumByName(const char name[], _md);
+ssize_t getPredNumByName(const char name[], _md);
+Func* getFuncOrPredByName(const char name[], _md); /* returns Func or Pred pointer */
 
-supp getOrAddConstant(char name[], DataTypeId typeId, _md);
+supp getOrAddConstant(const char name[], DataTypeId typeId, _md);
 
 supp ask(Query* queryPtr, _md);
 Boolean setFact(Fact* factPtr, _md);

@@ -299,7 +299,7 @@ void acceptDeclaration(ParserNode* pnDeclPtr, _md)
 	size_t parCt = parTypesVect.len - 1;
 	DataTypeId* parTypes = ptr(DataTypeId, parTypesVect);
 	DataTypeId type = parTypes[parCt];
-	Func func = createFunc(funcName, parCt, parTypes, parTypes[parCt]);
+	Func func = createFunc((const char*)funcName, parCt, parTypes, parTypes[parCt]);
 	
 	if (type == DT_BOOL)
 		addPred(func, modelPtr);
