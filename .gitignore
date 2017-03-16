@@ -5,3 +5,4 @@ bin/
 garbage/
 Logic.geany
 PathFinding/
+CMakeLists.txt.user

@@ -8,7 +8,7 @@ project(interpretator)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories(../atl)
 
-file(GLOB_RECURSE SOURCES "*.c")
+file(GLOB_RECURSE SOURCES "*.cpp")
 file(GLOB_RECURSE HEADERS "*.h")
 
 # configure project

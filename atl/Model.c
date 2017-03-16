@@ -716,11 +716,11 @@ char* getFactStr(Fact* factPtr, _md)
 {
 	char* str = getDynamicStr("");
 	size_t strLen = 0;
+    Func* funcPtr = factPtr->funcPtr;
 
-	if (conCmp(factPtr->value, CONST_FALSE))
+    if (funcPtr->dataType == DT_BOOL && conCmp(factPtr->value, CONST_FALSE))
 		addText(str, "!", strLen);
 	
-	Func* funcPtr = factPtr->funcPtr;
 	addText(str, funcPtr->name, strLen);
 	addText(str, "(", strLen);
 	size_t parNum;

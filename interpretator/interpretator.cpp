@@ -13,6 +13,51 @@ extern "C"
 }
 
 
+
+int main(int argc, char** argv)
+{
+    if (argc == 1)
+    {
+        std::cout << "No input files specified." << std::endl;
+        return 0;
+    }
+
+    ATL_init();
+    ATL_ModelId modelId = ATL_createModel();
+    ATL_setDebugStream(stdout, modelId);
+    ATL_setErrorStream(stderr, modelId);
+
+    // input files
+    for (int fileNum = 1; fileNum < argc && ATL_getErrorCt(modelId) == 0; ++fileNum)
+    {
+        ATL_inputFile(argv[fileNum], modelId);
+    }
+
+    // check errors
+    if (ATL_getErrorCt(modelId) > 0)
+    {
+        ATL_free();
+        return 1;
+    }
+
+    // start interpretation
+    ATL_run(modelId);
+
+    // check errors
+    if (ATL_getErrorCt(modelId) > 0)
+    {
+        ATL_free();
+        return 1;
+    }
+
+    ATL_free();
+    return 0;
+}
+
+
+
+
+/*
 void processErrors(size_t firstErrNum, size_t lastErrNum, ATL_ModelId modelId);
 void inputFile(const std::string &filename, ATL_ModelId modelId);
 
@@ -122,3 +167,4 @@ void processErrors(size_t firstErrNum, size_t lastErrNum, ATL_ModelId modelId)
         ATL_printError(errNum, stderr, modelId);
     }
 }
+*/

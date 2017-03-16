@@ -364,29 +364,5 @@ void ATL_printRestrictions(_atlm)
 
 void ATL_printFacts(_atlm)
 {
-    if (modelPtr->debugStream == NULL) return;
-
-    size_t predNum, funcNum;
-
-    //~ fprintf(modelPtr->debugStream, "Declarations:\n");
-
-    for (predNum = ARITHMETIC_RELATIONS_COUNT; predNum < preds_m.len; ++predNum)
-    {
-        Pred* predPtr = getPredPtr(predNum);
-
-        char* funcStr = getFuncDeclStr(predPtr, modelPtr);
-        fprintf(modelPtr->debugStream, "%s\n", funcStr);
-        freePtr(funcStr);
-
-        //
-    }
-
-    for (funcNum = ARITHMETIC_FUNCTION_COUNT; funcNum < funcs_m.len; ++funcNum)
-    {
-        Func* funcPtr = getFuncPtr(funcNum);
-
-        char* funcStr = getFuncDeclStr(funcPtr, modelPtr);
-        fprintf(modelPtr->debugStream, "%s\n", funcStr);
-        freePtr(funcStr);
-    }
+    // TODO
 }
