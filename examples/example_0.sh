@@ -20,8 +20,7 @@ FACTS
 	#~ P1(a);
 #~ 
 	#~ All x1, x2:Type
-		#~ P1(x1) & P2(x1, x2) & P2(x2, x2) => P3(x1, x2, x2);
-	
+		#~ P1(x1) & P2(x1, x2) & P2(x2, x2) => P3(x1, x2, x2);	
 
 	A(a, b);	A(g, d);
 	B(b, d);	B(b, e);	B(b, k);

@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "atl.h"
+#include <atl.h>
 
 
 /* functions */
@@ -57,12 +57,6 @@ int main(int argc, char** argv)
 	char commandStr[COMMAND_STR_LEN];
 	char inWork = 1;
 	
-	//~ inWork = 0;
-	//~ ATL_inputFile("../example.sh", modelId);
-	//~ printErrors(0, ATL_getErrorCt(modelId) - 1, modelId);
-	//~ ATL_printAxioms(modelId);
-	//~ ATL_run(modelId);
-	
 	while (inWork)
 	{
 		printf("> ");
@@ -83,31 +77,6 @@ int main(int argc, char** argv)
 
 
 /* implementation */
-
-void setErrorColor()
-{
-	#ifdef USE_COLORS
-		#if PLATFORM == PLATFORM_WIDNOWS
-			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-			SetConsoleTextAttribute(hConsole, (WORD) ((0 << 4) | 12));
-		#elif PLATFORM == PLATFORM_UNIX
-			printf("\033[31m");
-		#endif
-	#endif
-}
-
-void setNormalColor()
-{
-	#ifdef USE_COLORS
-		#if PLATFORM == PLATFORM_WIDNOWS
-			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-			SetConsoleTextAttribute(hConsole, (WORD) ((0 << 4) | 7));
-		#elif PLATFORM == PLATFORM_UNIX
-			printf("\033[0m");
-		#endif
-	#endif
-}
-
 
 Boolean acceptCommand(char commandStr[], ATL_ModelId modelId)
 {
@@ -213,4 +182,29 @@ void printErrors(long firstErrNum, long lastErrNum, ATL_ModelId modelId)
 	}
 	
 	setNormalColor();
+}
+
+
+void setErrorColor()
+{
+    #ifdef USE_COLORS
+        #if PLATFORM == PLATFORM_WIDNOWS
+            HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            SetConsoleTextAttribute(hConsole, (WORD) ((0 << 4) | 12));
+        #elif PLATFORM == PLATFORM_UNIX
+            printf("\033[31m");
+        #endif
+    #endif
+}
+
+void setNormalColor()
+{
+    #ifdef USE_COLORS
+        #if PLATFORM == PLATFORM_WIDNOWS
+            HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            SetConsoleTextAttribute(hConsole, (WORD) ((0 << 4) | 7));
+        #elif PLATFORM == PLATFORM_UNIX
+            printf("\033[0m");
+        #endif
+    #endif
 }

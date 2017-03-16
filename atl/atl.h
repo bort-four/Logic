@@ -128,5 +128,6 @@ void ATL_printError(size_t errNum, FILE* stream, _atlm);
 void ATL_printDeclarations(_atlm);
 void ATL_printAxioms(_atlm);
 void ATL_printRestrictions(_atlm);
+void ATL_printFacts(_atlm);
 
 #endif
